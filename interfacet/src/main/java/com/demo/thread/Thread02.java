@@ -7,6 +7,6 @@ package com.demo.thread;
 public class Thread02 implements Runnable {
     @Override
     public void run() {
-
+        //工作内容
     }
 }
