@@ -20,7 +20,23 @@ public class ThreadPool01 {
             TimeUnit.SECONDS, (BlockingQueue<Runnable>) Executors.defaultThreadFactory(), new ThreadPoolExecutor.CallerRunsPolicy());
 
     public static void main(String[] args) {
-
+        ThreadPool01 pool01 = new ThreadPool01();
+        for (int i=0;i<1000;i++)
+        pool01.test();
     }
+    public void test(){
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println(Thread.currentThread().getName()+"started");
 
+                try {
+                    TimeUnit.SECONDS.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(Thread.currentThread().getName()+"end");
+            }
+        });
+    }
 }
