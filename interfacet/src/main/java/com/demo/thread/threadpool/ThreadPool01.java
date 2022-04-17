@@ -17,7 +17,7 @@ public class ThreadPool01 {
     // 如果这个线程异常结束，会有另一个取代它，保证顺序执行。单工作线程最大的特点是可保证顺序地执行各个任务，并且在任意给定的时间不会有多个线程是活动的。
     ExecutorService executorService03 = Executors.newSingleThreadExecutor();
     ThreadPoolExecutor executor = new ThreadPoolExecutor(10,30,100,
-            TimeUnit.SECONDS, (BlockingQueue<Runnable>) Executors.defaultThreadFactory(), new ThreadPoolExecutor.CallerRunsPolicy());
+            TimeUnit.SECONDS,new ArrayBlockingQueue<Runnable>(30) ,Executors.defaultThreadFactory(), new ThreadPoolExecutor.CallerRunsPolicy());
 
     public static void main(String[] args) {
         ThreadPool01 pool01 = new ThreadPool01();
