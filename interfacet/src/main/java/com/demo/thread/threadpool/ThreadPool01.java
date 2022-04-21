@@ -25,11 +25,8 @@ public class ThreadPool01 {
         pool01.test();
     }
     public void test(){
-        executor.execute(new Runnable() {
-            @Override
-            public void run() {
+        executor.execute(() -> {
                 System.out.println(Thread.currentThread().getName()+"started");
-
                 try {
                     TimeUnit.SECONDS.sleep(10);
                 } catch (InterruptedException e) {
@@ -37,6 +34,6 @@ public class ThreadPool01 {
                 }
                 System.out.println(Thread.currentThread().getName()+"end");
             }
-        });
+        );
     }
 }
